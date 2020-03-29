@@ -1,0 +1,4 @@
+.custom-background-image {
+  background: url('images/pi.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
