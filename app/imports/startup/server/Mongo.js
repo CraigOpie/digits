@@ -1,12 +1,13 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
+import { Contacts } from '../../api/contact/Contacts';
 
 /* eslint-disable no-console */
 
 /** Initialize the database with a default data document. */
 function addData(data) {
   console.log(`  Adding: ${data.name} (${data.owner})`);
-  Stuffs.insert(data);
+  Contacts.insert(data);
 }
 
 /** Initialize the collection if empty. */
