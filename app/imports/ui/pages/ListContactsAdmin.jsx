@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Contacts } from '../../api/contact/Contacts';
 import ContactAdmin from '../components/ContactAdmin';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+/** Renders a table containing all of the Contact documents. Use <ContactItem> to render each row. */
 class ListContactsAdmin extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
