@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Image, Feed } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
+import { Note } from './Note';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Contact extends React.Component {
@@ -21,6 +22,11 @@ class Contact extends React.Component {
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
+            <Feed>
+              {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
+            </Feed>
+          </Card.Content>
+          <Card.Content extra>
             <Link to={`/edit/${this.props.contact._id}`}>Edit</Link>
           </Card.Content>
         </Card>
@@ -31,6 +37,10 @@ class Contact extends React.Component {
 /** Require a document to be passed to this component. */
 Contact.propTypes = {
   contact: PropTypes.object.isRequired,
+  notes: PropTypes.object.isRequired,
+};
+Note.propTypes = {
+  notes: PropTypes.object.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
