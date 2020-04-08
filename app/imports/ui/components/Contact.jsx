@@ -2,13 +2,34 @@ import React from 'react';
 import { Card, Image, Feed, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import Note from './Note';
 import AddNote from './AddNote';
 
 /** Renders a single row in the List Contact table. See pages/ListContacts.jsx. */
 class Contact extends React.Component {
   removeItem(docID) {
-    this.props.Contacts.remove(docID);
+    swal({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      buttons: {
+        cancel: 'Cancel',
+        result: {
+          text: 'Yes, delete it!',
+          value: true,
+        },
+      },
+    }).then((value) => {
+      if (value) {
+        this.props.Contacts.remove(docID);
+        swal(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success',
+        );
+      }
+    });
   }
 
   render() {
