@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Feed } from 'semantic-ui-react';
+import { Card, Image, Feed, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import Note from './Note';
@@ -7,6 +7,10 @@ import AddNote from './AddNote';
 
 /** Renders a single row in the List Contact table. See pages/ListContacts.jsx. */
 class Contact extends React.Component {
+  removeItem(docID) {
+    this.props.Contacts.remove(docID);
+  }
+
   render() {
     return (
         <Card centered>
@@ -33,6 +37,9 @@ class Contact extends React.Component {
           <Card.Content extra>
             <AddNote owner={this.props.contact.owner} contactId={this.props.contact._id}/>
           </Card.Content>
+          <Card.Content extra>
+            <Button basic onClick={() => this.removeItem(this.props.contact._id)}>Delete</Button>
+          </Card.Content>
         </Card>
     );
   }
@@ -41,6 +48,7 @@ class Contact extends React.Component {
 /** Require a document to be passed to this component. */
 Contact.propTypes = {
   contact: PropTypes.object.isRequired,
+  Contacts: PropTypes.object.isRequired,
   notes: PropTypes.array.isRequired,
 };
 
