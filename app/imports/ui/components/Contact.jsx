@@ -8,6 +8,7 @@ import AddNote from './AddNote';
 
 /** Renders a single row in the List Contact table. See pages/ListContacts.jsx. */
 class Contact extends React.Component {
+  /** Removes the Contact from the database and presents a confirmation check */
   removeItem(docID) {
     swal({
       title: 'Are you sure?',
